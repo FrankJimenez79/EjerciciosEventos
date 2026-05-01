@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ejercicios de Eventos</title>
+    <meta name="description" content="Ejercicios de Eventos" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.png" />
+
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#fafafa" />
+    <style>
+      .box {
+        width: 50px;
+        height: 50px;
+        background-color: red;
+        position: relative;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3>Ejercicio 2</h3>
+    <ul>
+      <li><a href="index.html">Atras</a></li>
+    </ul>
+    <p>
+      Crea una aplicación cuyo código HTML contenga únicamente una caja roja.
+      Cada vez que el usuario pulse algunas de las teclas de los cursores
+      (flecha arriba, flecha abajo, flecha a derecha, flecha a izquierda) la
+      caja debe desplazarse 10 px en la dirección establecida por el cursor.
+    </p>
+    <div class="box"></div>
+
+    <script>
+      let caja = document.querySelector(".box");
+      let positionX = 0;
+      let positionY = 0;
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowUp") {
+          positionY = positionY - 10;
+          caja.style.top = `${positionY}px`;
+        } else if (e.key === "ArrowDown") {
+          positionY = positionY + 10;
+          caja.style.top = `${positionY}px`;
+        } else if (e.key === "ArrowLeft") {
+          positionX = positionX - 10;
+          caja.style.left = `${positionX}px`;
+        } else if (e.key === "ArrowRight") {
+          positionX = positionX + 10;
+          caja.style.left = `${positionX}px`;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ejercicios de Eventos</title>
+    <meta name="description" content="Ejercicios de Eventos" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.png" />
+
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#fafafa" />
+  </head>
+
+  <body>
+    <h3>Ejercicio 1</h3>
+    <ul>
+      <li><a href="index.html">Atras</a></li>
+    </ul>
+    <p>
+      Crea una página HTML con un contenedor de una imagen. Debes tener
+      preparadas diez imágenes y en función de la tecla numérica que se pulse
+      (0, 1, 2, 3, 4, 5, 6, 7, 8, 9) debe aparecer esa imagen en el contenedor.
+      Cuando se pulse otro número, debe vaciarse el contenedor y cargarse de
+      nuevo su imagen correspondiente.
+    </p>
+
+    <figure></figure>
+
+    <script>
+      const imagenes = [
+        "https://picsum.photos/300/200?random=1",
+        "https://picsum.photos/300/200?random=2",
+        "https://picsum.photos/300/200?random=3",
+        "https://picsum.photos/300/200?random=4",
+        "https://picsum.photos/300/200?random=5",
+        "https://picsum.photos/300/200?random=6",
+        "https://picsum.photos/300/200?random=7",
+        "https://picsum.photos/300/200?random=8",
+        "https://picsum.photos/300/200?random=9",
+        "https://picsum.photos/300/200?random=10",
+      ];
+
+      let figura = document.querySelector("figure");
+
+      document.body.addEventListener("keydown", (e) => {
+        let teclaPulsada = parseInt(e.key);
+        if (teclaPulsada >= 0 && teclaPulsada <= 9) {
+          figura.innerHTML = "";
+          let imagen = document.createElement("img");
+          imagen.src = imagenes[teclaPulsada];
+          figura.append(imagen);
+        } else {
+          console.log("No has pulsado una tecla entre el 0 y el 9");
+        }
+      });
+    </script>
+  </body>
+</html>
