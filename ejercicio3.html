@@ -1,0 +1,77 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ejercicios de Eventos</title>
+    <meta name="description" content="Ejercicios de Eventos" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.png" />
+
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#fafafa" />
+    <style></style>
+  </head>
+
+  <body>
+    <h3>Ejercicio 3</h3>
+    <ul>
+      <li><a href="index.html">Atras</a></li>
+    </ul>
+    <p>
+      Escribe un programa que permita ordenar los elementos de una lista
+      desordenada. Cada elemento debe tener un aspa en su extremo derecho para
+      poder ser eliminado. Además, al final habrá un botón para añadir un
+      elemento. El texto del nuevo elemento se le debe pedir al usuario por
+      teclado.
+    </p>
+    <hr />
+
+    <ul id="list">
+      <li>Nocilla <button class="removeButton">X</button></li>
+      <li>Leche <button class="removeButton">X</button></li>
+      <li>Almendras <button class="removeButton">X</button></li>
+      <li>Olivas <button class="removeButton">X</button></li>
+    </ul>
+    <input id="addInput" type="text" /> <button id="addButton">Añadir</button>
+    <script>
+      const removeButton = document.querySelectorAll(".removeButton");
+      for (let button of removeButton) {
+        button.addEventListener("click", () => {
+          button.parentElement.remove();
+        });
+      }
+
+      let input = document.querySelector("#addInput");
+      let ul = document.querySelector("#list");
+      let addButton = document.querySelector("#addButton");
+
+      addButton.addEventListener("click", () => {
+        if (input.value.trim().length === 0) {
+          return;
+        } else {
+          const li = document.createElement("li");
+          li.textContent = input.value.trim();
+          const button = document.createElement("button");
+          button.textContent = "X";
+          li.append(button);
+          ul.append(li);
+          input.value = "";
+          button.addEventListener("click", (event) => {
+            event.target.parentElement.remove();
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
