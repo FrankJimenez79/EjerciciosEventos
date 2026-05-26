@@ -38,10 +38,26 @@
     <hr />
 
     <ul id="list">
-      <li>Nocilla <button class="removeButton">X</button></li>
-      <li>Leche <button class="removeButton">X</button></li>
-      <li>Almendras <button class="removeButton">X</button></li>
-      <li>Olivas <button class="removeButton">X</button></li>
+      <li>
+        Nocilla <button class="subir">Subir</button
+        ><button class="bajar">Bajar</button
+        ><button class="removeButton">X</button>
+      </li>
+      <li>
+        Leche <button class="subir">Subir</button
+        ><button class="bajar">Bajar</button
+        ><button class="removeButton">X</button>
+      </li>
+      <li>
+        Almendras <button class="subir">Subir</button
+        ><button class="bajar">Bajar</button
+        ><button class="removeButton">X</button>
+      </li>
+      <li>
+        Olivas <button class="subir">Subir</button
+        ><button class="bajar">Bajar</button
+        ><button class="removeButton">X</button>
+      </li>
     </ul>
     <input id="addInput" type="text" /> <button id="addButton">Añadir</button>
     <script>
@@ -49,6 +65,28 @@
       for (let button of removeButton) {
         button.addEventListener("click", () => {
           button.parentElement.remove();
+        });
+      }
+
+      const subirBoton = document.querySelectorAll(".subir");
+      for (let boton of subirBoton) {
+        boton.addEventListener("click", () => {
+          const liPadre = boton.parentElement;
+          const liHermanoAnterior = liPadre.previousElementSibling;
+          if (liHermanoAnterior) {
+            liHermanoAnterior.before(liPadre);
+          }
+        });
+      }
+
+      const BajarBoton = document.querySelectorAll(".bajar");
+      for (let boton of BajarBoton) {
+        boton.addEventListener("click", () => {
+          const liPadre = boton.parentElement;
+          const liHermanoPosterior = liPadre.nextElementSibling;
+          if (liHermanoPosterior) {
+            liHermanoPosterior.after(liPadre);
+          }
         });
       }
 
@@ -62,6 +100,28 @@
         } else {
           const li = document.createElement("li");
           li.textContent = input.value.trim();
+          const buttonSubir = document.createElement("button");
+          buttonSubir.textContent = "Subir";
+          li.append(buttonSubir);
+          buttonSubir.addEventListener("click", () => {
+            const liPadre = buttonSubir.parentElement;
+            const liHermanoAnterior = liPadre.previousElementSibling;
+            if (liHermanoAnterior) {
+              liHermanoAnterior.before(liPadre);
+            }
+          });
+
+          const buttonBajar = document.createElement("button");
+          buttonBajar.textContent = "Bajar";
+          li.append(buttonBajar);
+          buttonBajar.addEventListener("click", () => {
+            const liPadre = buttonBajar.parentElement;
+            const liHermanoPosterior = liPadre.nextElementSibling;
+            if (liHermanoPosterior) {
+              liHermanoPosterior.after(liPadre);
+            }
+          });
+
           const button = document.createElement("button");
           button.textContent = "X";
           li.append(button);
