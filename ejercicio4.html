@@ -36,6 +36,23 @@
     </p>
     <hr />
 
-    <script></script>
+    <p id="parrafoDinamico"></p>
+    <button id="botonLimpiar">Limpiar</button>
+
+    <script>
+      const parrafo = document.querySelector("#parrafoDinamico");
+      const botonLimpiar = document.querySelector("#botonLimpiar");
+
+      document.addEventListener("keydown", (event) => {
+        const teclaPulsada = event.key;
+        if (teclaPulsada.length === 1) {
+          parrafo.textContent = parrafo.textContent + teclaPulsada;
+        }
+      });
+
+      botonLimpiar.addEventListener("click", () => {
+        parrafo.textContent = "";
+      });
+    </script>
   </body>
 </html>
