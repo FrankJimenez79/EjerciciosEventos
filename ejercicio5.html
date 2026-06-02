@@ -1,0 +1,59 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ejercicios de Eventos</title>
+    <meta name="description" content="Ejercicios de Eventos" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.png" />
+
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#fafafa" />
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        background-color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3>Ejercicio 5</h3>
+    <ul>
+      <li><a href="index.html">Atras</a></li>
+    </ul>
+    <p>
+      Crea una rutina que no permita que el ratón se coloque encima de una caja
+      azul de 100 x 100 px. Cada vez que el ratón intente colocarse encima, la
+      posición de la caja debe cam- biar aleatoriamente por la página.
+    </p>
+    <hr />
+
+    <div id="box"></div>
+
+    <script>
+      const box = document.querySelector("#box");
+      box.addEventListener("mouseover", () => {
+        const maxX = innerWidth - 100;
+        const maxY = innerHeight - 100;
+        const newX = Math.floor(Math.random() * maxX);
+        const newY = Math.floor(Math.random() * maxY);
+        box.style.left = `${newX}px`;
+        box.style.top = `${newY}px`;
+      });
+    </script>
+  </body>
+</html>
