@@ -35,6 +35,32 @@
     </p>
     <hr />
 
-    <script></script>
+    <p id="parrafo">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus esse
+      numquam, debitis culpa impedit dolor aspernatur consectetur delectus
+      minima beatae, voluptas illo! Perspiciatis qui aspernatur, non veniam id
+      magni minima.
+    </p>
+    <button class="boton">a</button>
+    <button class="boton">e</button>
+    <button class="boton">i</button>
+    <button class="boton">o</button>
+    <button class="boton">u</button>
+
+    <script>
+      const parrafo = document.querySelector("#parrafo");
+      const botones = document.querySelectorAll(".boton");
+
+      for (const boton of botones) {
+        boton.addEventListener("click", (event) => {
+          const vocal = event.target.textContent;
+          const texto = parrafo.textContent;
+
+          const nuevoTexto = texto.split(vocal).join("");
+          parrafo.textContent = nuevoTexto;
+          boton.disabled = "true";
+        });
+      }
+    </script>
   </body>
 </html>
