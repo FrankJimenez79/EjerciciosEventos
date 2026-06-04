@@ -20,7 +20,21 @@
 
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#fafafa" />
-    <style></style>
+    <style>
+      #cajaVerde {
+        width: 10px;
+        height: 40px;
+        background-color: green;
+        margin-left: 10px;
+      }
+
+      #cajaRoja {
+        width: 10px;
+        height: 40px;
+        background-color: red;
+        margin-left: 10px;
+      }
+    </style>
   </head>
 
   <body>
@@ -41,6 +55,41 @@
     </p>
     <hr />
 
-    <script></script>
+    <div id="cajaVerde"></div>
+    ;
+    <div id="cajaRoja"></div>
+    ;
+    <p id="parrafoResultado"></p>
+    <script>
+      const cajaVerde = document.querySelector("#cajaVerde");
+      const cajaRoja = document.querySelector("#cajaRoja");
+      const parrafoResultado = document.querySelector("#parrafoResultado");
+      let juegoTerminado = false;
+
+      let anchoVerde = 10;
+      let anchoRojo = 10;
+      document.addEventListener("keydown", (event) => {
+        if (juegoTerminado) {
+          return;
+        }
+        if (event.key === "a") {
+          anchoVerde += 5;
+          cajaVerde.style.width = `${anchoVerde}px`;
+          if (anchoVerde === 50) {
+            parrafoResultado.textContent = "Ha ganado el Verde";
+            juegoTerminado = true;
+          }
+        }
+
+        if (event.key === "ñ") {
+          anchoRojo += 5;
+          cajaRoja.style.width = `${anchoRojo}px`;
+          if (anchoRojo === 50) {
+            parrafoResultado.textContent = "Ha ganado el Rojo";
+            juegoTerminado = true;
+          }
+        }
+      });
+    </script>
   </body>
 </html>
