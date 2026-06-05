@@ -1,0 +1,133 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ejercicios de Eventos</title>
+    <meta name="description" content="Ejercicios de Eventos" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.png" />
+
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#fafafa" />
+    <style>
+      #barraVerde {
+        background-color: green;
+        width: 10px;
+        height: 40px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+      #barraRoja {
+        background-color: red;
+        width: 10px;
+        height: 40px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+      #barraAzul {
+        background-color: blue;
+        width: 10px;
+        height: 40px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+      #reiniciar {
+        margin-left: 10px;
+      }
+      #mensajeGanador {
+        margin-left: 10px;
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3>Ejercicio 8</h3>
+    <ul>
+      <li><a href="index.html">Atras</a></li>
+    </ul>
+    <p>
+      🎯 Ejercicio: Carrera de 3 barras Crea una aplicación que simule una
+      carrera de velocidad entre tres jugadores. Requisitos En pantalla deben
+      aparecer: una barra verde una barra roja una barra azul Cada barra: alto:
+      40px ancho inicial: 10px Controles Jugador Verde Tecla: a Cada pulsación:
+      +5px de ancho Jugador Rojo Tecla: ñ Cada pulsación: +5px de ancho Jugador
+      Azul Tecla: espacio Cada pulsación: +5px de ancho Condición de victoria
+      Cuando cualquiera de las barras alcance: 300px de ancho: termina la
+      partida se ignoran más pulsaciones aparece un mensaje indicando el ganador
+      Ejemplos: GANA VERDE GANA ROJO GANA AZUL Reiniciar partida Añade un botón:
+      Reiniciar Al pulsarlo: todas las barras vuelven a 10px desaparece el
+      mensaje de ganador el juego vuelve a activarse
+    </p>
+    <hr />
+
+    <div id="barraVerde"></div>
+    <div id="barraRoja"></div>
+    <div id="barraAzul"></div>
+    <button id="reiniciar">Reiniciar</button>
+    <p id="mensajeGanador"></p>
+    <script>
+      let pixelInicialVerde = 10;
+      let pixelInicialRojo = 10;
+      let pixelInicialAzul = 10;
+      let juegoTerminado = false;
+
+      const barraVerde = document.querySelector("#barraVerde");
+      const mensajeGanador = document.querySelector("#mensajeGanador");
+      const barraRoja = document.querySelector("#barraRoja");
+      const barraAzul = document.querySelector("#barraAzul");
+      const botonReiniciar = document.querySelector("#reiniciar");
+      document.addEventListener("keydown", (event) => {
+        if (juegoTerminado) {
+          return;
+        }
+
+        if (event.key === "a") {
+          pixelInicialVerde += 5;
+          barraVerde.style.width = `${pixelInicialVerde}px`;
+          if (pixelInicialVerde >= 300) {
+            juegoTerminado = true;
+            mensajeGanador.textContent = "HA GANADO EL VERDE";
+          }
+        }
+        if (event.key === "ñ") {
+          pixelInicialRojo += 5;
+          barraRoja.style.width = `${pixelInicialRojo}px`;
+          if (pixelInicialRojo >= 300) {
+            juegoTerminado = true;
+            mensajeGanador.textContent = "HA GANADO EL ROJO";
+          }
+        }
+        if (event.key === " ") {
+          pixelInicialAzul += 5;
+          barraAzul.style.width = `${pixelInicialAzul}px`;
+          if (pixelInicialAzul >= 300) {
+            juegoTerminado = true;
+            mensajeGanador.textContent = "HA GANADO EL AZUL";
+          }
+        }
+      });
+      botonReiniciar.addEventListener("click", () => {
+        juegoTerminado = false;
+        pixelInicialVerde = 10;
+        pixelInicialRojo = 10;
+        pixelInicialAzul = 10;
+        mensajeGanador.textContent = "";
+        barraVerde.style.width = `${pixelInicialVerde}px`;
+        barraRoja.style.width = `${pixelInicialRojo}px`;
+        barraAzul.style.width = `${pixelInicialAzul}px`;
+      });
+    </script>
+  </body>
+</html>
